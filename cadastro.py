@@ -4,13 +4,16 @@ from hashlib import sha512
 from ferramentas import valida_cpf, validar_senha, valida_email, consulta_contatos_cadastrados
 
 def cadastrar_pessoa(cur) -> int:
-    nome_completo_informado = input('Informe o nome completo: ').upper().strip()
-    data_nascimento = cadastrar_data_nascimento()
-    sexo = cadastrar_sexo(cur)
-    cur.execute('INSERT INTO pessoa (nome_completo, data_nascimento, id_sexo) VALUES (?, ?, ?)', (nome_completo_informado, data_nascimento, sexo))
-    cur.execute('SELECT last_insert_rowid();')
-    id_pessoa = cur.fetchone()[0]
-
+    while True:
+        nome_completo_informado = input('Informe o nome completo: ').upper().strip()
+        
+        if nome_completo_informado:
+            data_nascimento = cadastrar_data_nascimento()
+            sexo = cadastrar_sexo(cur)
+            cur.execute('INSERT INTO pessoa (nome_completo, data_nascimento, id_sexo) VALUES (?, ?, ?)', (nome_completo_informado, data_nascimento, sexo))
+            cur.execute('SELECT last_insert_rowid();')
+            id_pessoa = cur.fetchone()[0]
+            break
     return id_pessoa
 
 def cadastrar_data_nascimento() -> str:
