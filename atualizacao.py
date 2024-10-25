@@ -94,10 +94,17 @@ def atualizar_usuario(cur, id_pessoa):
             break
 
 def atualizar_status(cur, id_pessoa):
-    novo_status = input('Deseja alterar o status? [A] Ativar / [I] Inativar (ou deixe vazio para não alterar): ').upper().strip()
-    if novo_status in ['A', 'I']:
-        status_valor = 1 if novo_status == 'A' else 0
-        cur.execute('UPDATE usuario SET status = ?, data_atualizacao = CURRENT_TIMESTAMP WHERE id_pessoa = ?;', (status_valor, id_pessoa))
+    while True:
+        novo_status = input('Deseja alterar o status? [A] Ativar / [I] Inativar (ou deixe vazio para não alterar): ').upper().strip()
+        if novo_status:       
+            if novo_status in ['A', 'I']:
+                status_valor = 1 if novo_status == 'A' else 0
+                cur.execute('UPDATE usuario SET status = ?, data_atualizacao = CURRENT_TIMESTAMP WHERE id_pessoa = ?;', (status_valor, id_pessoa))
+                break
+            else:
+                print("Escolha uma opção válida.")
+        else:
+            break
 
 def atualizar_registro(cur, con):
     id_pessoa = input("Informe o ID do usuário a ser atualizado: ")
