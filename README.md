@@ -57,8 +57,8 @@ O banco de dados utilizado é relacional e normalizado. As tabelas do banco são
    pip install -r requirements.txt
    ```
    
-Certifique-se de que o Python e as bibliotecas necessárias estejam instalados.
-Execute o arquivo menu_principal.py para iniciar o sistema:
+## Execução do Sistema 🚀
+Após a instalação das dependências, você pode iniciar o sistema executando o módulo principal:
 
 ```bash
 python menu_principal.py
