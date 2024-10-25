@@ -1,6 +1,8 @@
 from datetime import datetime
-from ferramentas import valida_cpf, valida_email
+from ferramentas import valida_cpf, valida_email, validar_senha
 from re import sub
+from getpass import getpass
+from hashlib import sha512
 
 def atualizar_nome_completo(cur, id_pessoa):
     novo_nome = input('Informe o novo nome completo (ou deixe vazio para não alterar): ').upper().strip()
@@ -106,6 +108,24 @@ def atualizar_status(cur, id_pessoa):
         else:
             break
 
+def atualizar_senha(cur, id_pessoa):
+    while True:
+        texto_informativo_senha = 'A senha deve ter pelo menos 10 caracteres e conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.'
+        print(texto_informativo_senha)
+        nova_senha = getpass('Informe a nova senha (ou deixe vazio para não alterar): ').strip()
+        if nova_senha:       
+            confirmacao_nova_senha = getpass('Confirme a nova senha: ').strip()
+            nova_senha_confirmada = nova_senha == confirmacao_nova_senha
+
+            if validar_senha(nova_senha) and nova_senha_confirmada:
+                senha = sha512(nova_senha.encode('utf-8')).hexdigest()
+                cur.execute('UPDATE usuario SET senha = ?, data_atualizacao = CURRENT_TIMESTAMP WHERE id_pessoa = ?;', (senha, id_pessoa))
+                break
+            else:
+                print(f"Senha inválida.")
+        else:
+            break
+
 def atualizar_registro(cur, con):
     id_pessoa = input("Informe o ID do usuário a ser atualizado: ")
     try:
@@ -124,6 +144,7 @@ def atualizar_registro(cur, con):
         atualizar_email(cur, id_pessoa)
         atualizar_telefone(cur, id_pessoa)
         atualizar_usuario(cur, id_pessoa)
+        atualizar_senha(cur, id_pessoa)
         atualizar_status(cur, id_pessoa)
         con.commit()
         print("Registro atualizado com sucesso.")

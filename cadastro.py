@@ -2,6 +2,7 @@ from datetime import datetime
 from re import sub
 from hashlib import sha512
 from ferramentas import valida_cpf, validar_senha, valida_email, consulta_contatos_cadastrados
+from getpass import getpass
 
 def cadastrar_pessoa(cur) -> int:
     while True:
@@ -98,13 +99,15 @@ def cadastrar_senha() -> str:
     while True:
         texto_informativo_senha = 'A senha deve ter pelo menos 10 caracteres e conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial.'
         print(texto_informativo_senha)
-        senha_informada = input("Digite a senha: ")
-    
-        if validar_senha(senha_informada):
+        senha_informada = getpass("Digite a senha: ").strip()
+        confirmacao_senha = getpass("Confirme a senha: ").strip()
+        senha_confirmada = senha_informada == confirmacao_senha
+
+        if validar_senha(senha_informada) and senha_confirmada:
             senha = sha512(senha_informada.encode('utf-8')).hexdigest()
             break
         else:
-            print(f"Senha inválida. {texto_informativo_senha}")
+            print(f"Senha inválida.")
 
     return senha
 
