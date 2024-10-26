@@ -34,7 +34,7 @@ O banco de dados utilizado é relacional e normalizado. As tabelas do banco são
 
 ## Requisitos 📋
 
-- Python 3.13 🐍
+- Python 3.x 🐍
 
 ## Instalação das Dependências ⚙️
 
