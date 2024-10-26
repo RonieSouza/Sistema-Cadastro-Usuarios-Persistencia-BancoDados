@@ -5,6 +5,9 @@ Este projeto é um sistema de gerenciamento de pessoas que permite realizar oper
 
 🎥 [Vídeo de Demonstração no YouTube](https://www.youtube.com/watch?v=W0p_s-9FCGY)
 
+## Objetivo e Contexto 🎯
+O sistema foi desenvolvido como um estudo prático das operações CRUD em Python e manipulação de dados persistentes, sendo um ótimo exemplo para entender o uso de banco de dados SQLite em projetos Python. Ele é projetado como uma base para sistemas de cadastro de usuários, com práticas de validação e uma estrutura modular que pode ser expandida.
+
 ## Funcionalidades Principais 🌟
 - **Cadastro de Usuários**: Permite o registro de novos usuários com validações específicas.
 - **Atualização de Registros**: Usuários podem atualizar suas informações conforme necessário.
@@ -28,8 +31,9 @@ A estrutura do projeto é organizada em diversos módulos, cada um com uma funç
 - `menu_principal.py`: Apresenta o menu principal do sistema e gerencia a interação com o usuário. 📋
 
 ## Estrutura do Banco de Dados 📊
-O banco de dados utilizado é relacional e normalizado. As tabelas do banco são criadas via script, garantindo uma estrutura adequada e evitando redundâncias. 
+O banco de dados utilizado é relacional e normalizado. As tabelas do banco são criadas via script, garantindo uma estrutura adequada e evitando redundâncias.
 
+### Modelo de Normalização
 ![Modelo de Normalização](gestaodb.png)
 
 ## Requisitos 📋
