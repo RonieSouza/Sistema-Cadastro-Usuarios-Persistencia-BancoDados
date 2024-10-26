@@ -3,6 +3,8 @@
 ## Descrição 📜
 Este projeto é um sistema de gerenciamento de pessoas que permite realizar operações de cadastro, atualização, visualização e exclusão de registros de usuários. O sistema é desenvolvido em Python 🐍 e utiliza um banco de dados SQLite 🗄️ para armazenar as informações. A solução é voltada para uso em terminal, proporcionando um ambiente simples.
 
+🎥 [Vídeo de Demonstração no YouTube](https://www.youtube.com/watch?v=W0p_s-9FCGY)
+
 ## Funcionalidades Principais 🌟
 - **Cadastro de Usuários**: Permite o registro de novos usuários com validações específicas.
 - **Atualização de Registros**: Usuários podem atualizar suas informações conforme necessário.
